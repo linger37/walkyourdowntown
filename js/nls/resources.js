@@ -1,0 +1,112 @@
+define({
+    root: ({
+        map: {
+            error: "Unable to create map",
+            views: "views."
+        },
+        report: {
+            flag: "Flag as innapropriate",
+            error: "Error",
+            success: "Flagged",
+            loading: "Loading&hellip;"
+        },
+        mapNotes:{
+            notesUnavailable: "Description unavailable",
+            bookmarks: "Bookmarks",
+            zoomTo: "Zoom to this location and find out more information.",
+            untitledNote: "Untitled"
+        },
+        social: {
+            flickr: "Flickr",
+            mediaLayers: "Media Layers",
+            mediaLayersDescription: "See what people are talking about construction on Social Media sites",
+            flickrSettings: "Flickr Settings",
+            twitter: "Twitter",
+            twitterSettings: "Twitter Settings",
+            twitterUser: "Twitter Account",
+            twitterSignIn: "Sign in to Twitter",
+            webcams: "Webcams.travel",
+            instagram: "Instagram",
+            instagramSettings: "Instagram Settings",
+            igTime: "Uploaded within the past number of days",
+            youtube: "YouTube",
+            youtubeSettings: "YouTube Settings",
+            ytSettingsInfo: "View user-generated videos including network and professional content.",
+            ytTime: "Uploaded within the past",
+            today: "Day",
+            this_week: "Week",
+            this_month: "Month",
+            all_time: "All Time",
+            moreInfo: "More information",
+            searchTerms: "Search Terms",
+            search: "Search",
+            flSettingsInfo: "Return results matching a photo's title, description or tags.",
+            twSettingsInfo: "See what’s happening right now.",
+            igSettingsInfo: "Instagram is a fast, beautiful and fun way to share your life with friends and family.",
+            advancedOperators: "Tip: use <a target=\"_blank\" href=\"https://support.twitter.com/articles/71577-using-advanced-search\">operators</a> for creating advanced searches.",
+            tweetsFilteredBy: "tweets filtered by:",
+            photosFilteredBy: "photos filtered by:",
+            videosFilteredBy: "videos filtered by:",
+            twitterAccountStatus: "Enable the Twitter layer to see your status."
+        },
+        sidewalkClosure:{
+            general: "Following table shows sidewalk closure information at the map area"
+        },
+        about:{
+            appDescription:"This application is intended to provide sidewalk closure information and help pedestrains move around the construction sites around downtown Kitchener. You can also check out what people are taking about the construction."
+        },
+        route:{
+            Description:"Choose a category that is closest to your situation, and then find your sidewalk!"
+        },
+        general: {
+            map: "Map",
+            mapInfo: "Map Information",
+            legend: "Legend",
+            featured: "Featured Locations",
+            layers: "Layers",
+            share: "Share",
+            about: "About",
+            route: "Direction",
+            closureinfo:'Closures',
+            aboutApp:"About",
+            find: "Zip Code, city, etc.",
+            moreInfo: "More information",
+            dateModified: "Last modified",
+            noSearchResult: "No result found",
+            switchAccount: "Switch account",
+            signIn: "Sign in",
+            settings: "Settings"
+        }
+    }),
+    "ar": 1,
+    "cs": 1,
+    "da": 1,
+    "de": 1,
+    "el": 1,
+    "es": 1,
+    "et": 1,
+    "fi": 1,
+    "fr": 1,
+    "he": 1,
+    "hr": 1,
+    "it": 1,
+    "ja": 1,
+    "ko": 1,
+    "lt": 1,
+    "lv": 1,
+    "nl": 1,
+    "nb": 1,
+    "pl": 1,
+    "pt-br": 1,
+    "pt-pt": 1,
+    "ro": 1,
+    "ru": 1,
+    "sr": 1,
+    "sv": 1,
+    "th": 1,
+    "tr": 1,
+    "vi": 1,
+    "zh-cn": 1,
+    "zh-hk": 1,
+    "zh-tw": 1
+});

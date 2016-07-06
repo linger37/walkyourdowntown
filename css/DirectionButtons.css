@@ -1,0 +1,39 @@
+.myIconWalkStick {
+    background-image: url(../images/directionButtons/cane_150.jpg);
+    height: 40px;
+    width: 40px;
+    max-height: 100%;
+    max-width: 100%;
+    background-size: 100%;
+    background-size: 40px auto;
+}
+
+.myIconAbleBodied {
+    background-image: url(../images/directionButtons/walking_150.jpg);
+    height: 40px;
+    width: 40px;
+    max-height: 100%;
+    max-width: 100%;
+    background-size: 100%;
+    background-size: 40px auto;
+}
+
+.myIconMWheelChair {
+    background-image: url(../images/directionButtons/mwheelchair_150.jpg);
+    height: 40px;
+    width: 40px;
+    max-height: 100%;
+    max-width: 100%;
+    background-size: 100%;
+    background-size: 40px auto;
+}
+
+.myIconWheelChair {
+    background-image: url(../images/directionButtons/wheelchair_150.jpg);
+    height: 40px;
+    width: 40px;
+    max-height: 100%;
+    max-width: 100%;
+    background-size: 100%;
+    background-size: 40px auto;
+}

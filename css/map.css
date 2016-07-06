@@ -1,0 +1,13 @@
+#layerlistDiv{
+    position:absolute;
+    /*margin-right:10px;*/
+    /*margin-top:60px;*/
+    right:20px;
+    top:65px;
+    border: none;
+    z-index: 100;
+    font-family: "open_sansregular", sans-serif;
+    font-size: 15px;
+    overflow:auto;
+    opacity:0.8;
+}
