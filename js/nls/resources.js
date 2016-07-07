@@ -68,7 +68,7 @@ define({
             about: "About",
             route: "Direction",
             closureinfo:'Closures',
-            aboutApp:"About",
+            aboutApp:"General",
             find: "Zip Code, city, etc.",
             moreInfo: "More information",
             dateModified: "Last modified",

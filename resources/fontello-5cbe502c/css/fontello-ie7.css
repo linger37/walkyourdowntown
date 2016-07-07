@@ -1,15 +1,14 @@
-[class^="icon-"], [class*=" icon-"], [class*="icon-"],.left-arrow,.right-arrow,.dijitDialogCloseIcon,.esriGeocoderSearch,.esriGeocoderReset, .esriGeocoderSelectedCheck, .esriGeocoderMenuArrow, .note-expand, .esriGeocoderMenuClose, .icon-search-1, .icon-check-1 {
+[class^="icon-"], [class*=" icon-"] {
   font-family: 'fontello';
   font-style: normal;
   font-weight: normal;
-
+ 
   /* fix buttons height */
   line-height: 1em;
-
+ 
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
 }
-
  
 .icon-search-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe800;&nbsp;'); }
 .icon-info-circled-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe801;&nbsp;'); }
@@ -46,30 +45,3 @@
 .icon-calendar-inv { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe820;&nbsp;'); }
 .icon-target-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe82f;&nbsp;'); }
 .icon-wheelchair { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf193;&nbsp;'); }
-
-/* custom. don't remove */
-.left-arrow { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe80d;&nbsp;'); }
-.right-arrow { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe80b;&nbsp;'); }
-.esriRTL .left-arrow { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe80b;&nbsp;'); }
-.esriRTL .right-arrow { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe80d;&nbsp;'); }
-.map .calcite .titleButton.next {*zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xe807;&nbsp;');}
-.map .calcite .titleButton.prev {*zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xe80a;&nbsp;');}
-.esriRTL .map .calcite .titleButton.next {*zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xe80a;&nbsp;');}
-.esriRTL .map .calcite .titleButton.prev {*zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xe807;&nbsp;');}
-.dijitDialogCloseIcon { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe80c;&nbsp;'); }
-.esriGeocoderSearch { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe800;&nbsp;'); }
-.esriGeocoderReset { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe80c;&nbsp;'); }
-.HomeButtonCalcite .home {*zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xe808;&nbsp;');}
-.LocateButtonCalcite .zoomLocateButton {*zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xe82f;&nbsp;');}
-.map .calcite .titleButton.close {*zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xe80c;&nbsp;');}
-.map .calcite .titleButton.maximize {*zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xe817;&nbsp;');}
-.map .calcite .titleButton.restore {*zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xe817;&nbsp;');}
-.twitter-popup .action-reply {*zoom:expression(this.runtimeStyle['zoom'] = '1',this.innerHTML = '&#xe813;&nbsp;');}
-.twitter-popup .action-retweet {*zoom:expression(this.runtimeStyle['zoom'] = '1',this.innerHTML = '&#xe80f;&nbsp;');}
-.twitter-popup .action-favorite {*zoom:expression(this.runtimeStyle['zoom'] = '1',this.innerHTML = '&#xe811;&nbsp;');}
-.note-expand{ *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe81a;&nbsp;'); }
-.note-selected .note-expand{ *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe81b;&nbsp;'); }
-.esriGeocoderMenuArrow {*zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xe807;&nbsp;');}
-.esriGeocoderMenuActive .esriGeocoderMenuArrow { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe814;&nbsp;'); }
-.esriGeocoderSelected .esriGeocoderSelectedCheck { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe804;&nbsp;'); }
-.esriGeocoderMenuClose { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe80c;&nbsp;'); }

@@ -36,7 +36,7 @@ define({
   "enableViewsCount": true,
   "enableMoreInfo": true,
   "enablePrintButton": false,
-  "defaultBasemap": "dark-gray",
+  "defaultBasemap": "topo",
   "nextBasemap": "hybrid",
   //Go to http://www.arcgis.com/sharing/rest/content/items/df8bcc10430f48878b01c96e907a1fc3/data?f=pjson and input below the appropriate operational layer that you want to configure as swipe layer
   "swipeLayer": [{

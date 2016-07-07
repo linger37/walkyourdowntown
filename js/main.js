@@ -73,6 +73,7 @@ define([
                     iconList: "icon-list",
                     iconLayers: "icon-layers",
                     iconAbout: "icon-info-circled-1",
+                    iconClosure:"icon-attention-1",
                     iconRoute: "icon-direction",
                     iconText: "icon-text",
                     locateButtonTheme: "LocateButtonCalcite",
@@ -228,17 +229,19 @@ define([
                         }
                         //add feature table
                         var sidewalkClosure = new FeatureLayer("https://services1.arcgis.com/DwLTn0u9VBSZvUPe/arcgis/rest/services/SidewalkClosure/FeatureServer/0", {
-                            outFields: ['Name', 'End_Date','Reason_of_Closure']
+                            outFields: ['Name', 'End_Date', 'Reason_of_Closure']
                         });
 
                         var tableNode = dom.byId('closureInfoTable');
                         var closureInfoTable = new FeatureTable({
                             featureLayer: sidewalkClosure,
                             map: this.map,
-                            editable: false
+                            editable: false,
+                            outFields: ['Name', 'End_Date', 'Reason_of_Closure']
                         }, tableNode);
                         closureInfoTable.startup();
                         this._closureInfoTable = closureInfoTable;
+                        this._sidewalkClosure = sidewalkClosure;
                     }));
             },
             _initNewAboutPanel: function () {
@@ -344,7 +347,7 @@ define([
                             iconClass: 'myIconWalkStick',
                             onClick: function () {
                                 // Do something:
-                                dom.byId("categoryDesc").innerHTML = "You've chosen walkstick category";
+                                dom.byId("categoryDesc").innerHTML = "You've chosen cane category";
                                 if (directions.routeParams.polylineBarriers) {
                                     directions.routeParams.polylineBarriers = new FeatureSet();
                                 }
@@ -515,7 +518,7 @@ define([
                     content += '</div>';
                     // menu info
                     menuObj = {
-                        title: this.config.i18n.general.layers,
+                        title: this.config.i18n.general.aboutApp,
                         label: '<div class="' + this.css.iconAbout + '"></div><div class="' + this.css.iconText + '">' + this.config.i18n.general.aboutApp + '</div>',
                         content: content
                     };
@@ -535,8 +538,8 @@ define([
 
                     // menu info
                     menuObj = {
-                        title: this.config.i18n.general.layers,
-                        label: '<div class="' + this.css.iconLayers + '"></div><div class="' + this.css.iconText + '">' + this.config.i18n.general.closureinfo + '</div>',
+                        title: this.config.i18n.general.closureinfo,
+                        label: '<div class="' + this.css.iconClosure + '"></div><div class="' + this.css.iconText + '">' + this.config.i18n.general.closureinfo + '</div>',
                         content: content
                     };
                     // layers menu
@@ -705,6 +708,7 @@ define([
                 this._initClosurePanel();
                 this._initRoutePanel();
                 this.configureSocial();
+                this._defineSidewalkClosureLayer();
                 // on body click containing underlay class
                 on(document.body, '.dijitDialogUnderlay:click', function () {
                     // get all dialogs
@@ -721,7 +725,6 @@ define([
                     require(["esri/layers/FeatureLayer",
                             "esri/dijit/FeatureTable",
                             "esri/graphic",
-
                             "esri/tasks/query"],
                         lang.hitch(this, function (FeatureLayer, FeatureTable, Graphic, Query) {
                             var extent = evt.extent;
@@ -729,68 +732,16 @@ define([
                             //console.log(this.map);
                             var selectQuery = new Query();
                             selectQuery.geometry = extent;
-                            var featureCollection = {
-                                "layerDefinition": null,
-                                "featureSet": {
-                                    "features": [],
-                                    "geometryType": "esriGeometryPolyline"
-                                }
-                            };
-                            featureCollection.layerDefinition = {
-                                "geometryType": "esriGeometryPolyline",
-                                "objectIdField": "OBJECTID_1",
-                                "drawingInfo": {
-                                    "renderer": {
-                                        "type": "simple",
-                                        "symbol": {
-                                            "type": "esriSLS",
-                                            "style": "esriSLSSolid",
-                                            "color": [168, 0, 0, 255],
-                                            "width": 2
-                                        }
-                                    }
-                                },
-                                "fields": [{
-                                    "name": "OBJECTID_1",
-                                    "alias": "OBJECTID_1",
-                                    "type": "esriFieldTypeOID"
-                                }, {
-                                    "name": "OBJECTID",
-                                    "alias": "OBJECTID",
-                                    "type": "esriFieldTypeDouble"
-                                },
-                                    {
-                                    "name": "Name",
-                                    "alias": "Name",
-                                    "type": "esriFieldTypeString"
-                                },{
-                                    "name": "St_Date",
-                                    "alias": "St_Date",
-                                    "type": "esriFieldTypeDate"
-                                }, {
-                                    "name": "End_Date",
-                                    "alias": "End Date",
-                                    "type": "esriFieldTypeString"
-                                },
-                                {
-                                    "name": "Reason_of_Closure",
-                                    "alias": "Reason of Closure",
-                                    "type": "esriFieldTypeString"
-                                },]
-                            };
-                            var selectedClosure = new FeatureLayer(featureCollection, {
-                                id: 'sidewalk closure'
+                            this._selectedSidewalkClosure.clear();
+                            var temp = this._selectedSidewalkClosure;
+                            console.log(temp);
+
+
+                            this._sidewalkClosure.selectFeatures(selectQuery, FeatureLayer.SELECTION_NEW, function (results) {
+                                //console.log(results);
+                                temp.applyEdits(results, null, null);
                             });
-                            this.map.addLayers([selectedClosure]);
-                            var sidewalkClosure = new FeatureLayer("https://services1.arcgis.com/DwLTn0u9VBSZvUPe/arcgis/rest/services/SidewalkClosure/FeatureServer/0", {
-                                outFields: ['*']
-                            });
-                            sidewalkClosure.selectFeatures(selectQuery, FeatureLayer.SELECTION_NEW, function (results) {
-                                console.log(results);
-                                selectedClosure.applyEdits(results, null, null);
-                            });
-                            selectedClosure.outFields = ['Name', 'End_Date','Reason_of_Closure'];
-                            console.log(selectedClosure);
+
 
                             var tableNode = dom.byId('closureInfoTable');
                             if (tableNode) {
@@ -805,12 +756,36 @@ define([
                             this._closureInfoTable.destroy();
 
                             var selectedClosureInfoTable = new FeatureTable({
-                                featureLayer: selectedClosure,
+                                featureLayer: this._selectedSidewalkClosure,
                                 map: this.map,
-                                editable: false
+                                editable: false,
+                                outFields: ['Name', 'End_Date', 'Reason_of_Closure'],
+                                zoomToSelection: true,
+                                fieldInfos: [
+                                    {
+                                        name: 'Name',
+                                        alias: 'Sidewalk',
+                                        editable: false //disable editing on this field
+                                    },
+                                    {
+                                        name: 'End_Date',
+                                        alias: 'End Date',
+                                        editable: false,
+                                        dateOptions: {
+                                            datePattern: 'M/d/y',
+                                            timeEnabled: true
+                                        }
+                                    },
+                                    {
+                                        name: 'Reason_of_Closure',
+                                        alias: 'Close Reason',
+                                        editable: false
+                                    }
+                                ],
+
                             }, newTableNode);
                             selectedClosureInfoTable.startup();
-                            console.log(selectedClosureInfoTable);
+                            console.log(selectedClosureInfoTable.featureLayer);
                             this._closureInfoTable = selectedClosureInfoTable;
                         }));
 
@@ -1085,6 +1060,70 @@ define([
                     }
                 }), this.reportError);
             },
+            _defineSidewalkClosureLayer: function () {
+                require(["esri/layers/FeatureLayer", "esri/symbols/PictureMarkerSymbol"],
+                    lang.hitch(this, function (FeatureLayer, PictureMarkerSymbol) {
+                        var featureCollection = {
+                            "layerDefinition": null,
+                            "featureSet": {
+                                "features": [],
+                                "geometryType": "esriGeometryPolyline"
+                            }
+                        };
+                        featureCollection.layerDefinition = {
+                            "geometryType": "esriGeometryPolyline",
+                            "objectIdField": "OBJECTID_1",
+                            "drawingInfo": {
+                                "renderer": {
+                                    "type": "simple",
+                                    "symbol": {
+                                        "type": "esriSLS",
+                                        "style": "esriSLSSolid",
+                                        "color": [0, 25, 100, 0],
+                                        "width": 2
+                                    }
+                                }
+                            },
+                            "fields": [{
+                                "name": "OBJECTID_1",
+                                "alias": "OBJECTID_1",
+                                "type": "esriFieldTypeOID"
+                            }, {
+                                "name": "OBJECTID",
+                                "alias": "OBJECTID",
+                                "type": "esriFieldTypeDouble"
+                            },
+                                {
+                                    "name": "Name",
+                                    "alias": "Name",
+                                    "type": "esriFieldTypeString"
+                                }, {
+                                    "name": "St_Date",
+                                    "alias": "St_Date",
+                                    "type": "esriFieldTypeDate"
+                                }, {
+                                    "name": "End_Date",
+                                    "alias": "End Date",
+                                    "type": "esriFieldTypeString"
+                                },
+                                {
+                                    "name": "Reason_of_Closure",
+                                    "alias": "Reason of Closure",
+                                    "type": "esriFieldTypeString"
+                                },]
+                        };
+                        //this._sidewalkClosureDefinition = featureCollection;
+                        var selectedClosure = new FeatureLayer(featureCollection, {
+                            id: 'sidewalk closure'
+                        });
+                        selectedClosure.outFields = ['Name', 'End_Date', 'Reason_of_Closure'];
+                        //var selectionSymbol = new PictureMarkerSymbol("https://sampleserver6.arcgisonline.com/arcgis/rest/services/RedlandsEmergencyVehicles/FeatureServer/1/images/3540cfc7a09a7bd66f9b7b2114d24eee", 48, 48);
+                        //selectedClosure.setSelectionSymbol(selectionSymbol);
+                        this._selectedSidewalkClosure = selectedClosure;
+                        this.map.addLayers([selectedClosure]);
+                    }));
+
+            }
 
         });
     });
